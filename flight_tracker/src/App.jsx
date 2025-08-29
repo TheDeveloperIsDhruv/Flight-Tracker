@@ -1,14 +1,20 @@
 import { useState } from 'react'
 import Layout from './Components/Layout'
+import Flight from './Components/Flights';
 import './App.css'
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
 
   return (
     <>
-      <div> 
-          <Layout></Layout>
-       </div>
+     <Router>
+     
+        <Routes>
+          <Route path="/" element={<Layout />} />
+          <Route path="/flights" element={<Flight />} />
+        </Routes>
+    </Router>
     </>
   )
 }
