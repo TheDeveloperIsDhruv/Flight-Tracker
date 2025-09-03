@@ -17,17 +17,17 @@ Users can search flights by **From** and **To** city — supports **partial & ca
 
 ```bash
 # Clone Repo
-git clone https://github.com/your-username/flight-search-app.git
-cd flight-search-app
-
-# Backend setup
-npm install
-node server.js   # Runs on http://localhost:3000
+git clone https://***
+cd flight_tracker
 
 # Frontend setup
-cd frontend
 npm install
 npm run dev      # Runs on http://localhost:5173 (Vite default)
+
+# Backend setup
+cd Backend
+npm install
+node server.js   # Runs on http://localhost:3000
 
 🔗 API Endpoint
 POST /flights → Returns matching flights
@@ -35,8 +35,8 @@ POST /flights → Returns matching flights
 Example request body:
 { "departure": "New York", "arrival": "London" }
 
-🛠️ Future Plans
+## 🛠️ Future Plans
 - 🔗 Integrate with real-world flight APIs (Skyscanner, Amadeus, Aviationstack)
-- 📅 Add search by departure/arrival dates & times
-- 📍 Add airline logos and flight status details
-- 🌍 Deploy for public access
+- 📅  Add search by departure & arrival dates
+- 📍 Display airline logos, terminal info, and live flight status
+- 🌍 Deploy demo version for public use
