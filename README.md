@@ -1,14 +1,21 @@
-✈️ Flight Search App
-A simple full-stack flight search app built with React, Express, Axios, and Tailwind CSS.
+# ✈️ Flight Search App  
 
-Users can search flights by From and To city — supports partial & case-insensitive matches (e.g. typing "new" will match "New York"). Results are displayed in a glassy, modern UI.
+A simple **full-stack flight search app** built with **React, Express, Axios, and Tailwind CSS**.  
 
-⚡ Tech Stack
-Frontend: React, React Router, Axios, Tailwind CSS
-Backend: Node.js, Express, CORS
-Data Source: Mock flight dataset (mockAPI.js)
+Users can search flights by **From** and **To** city — supports **partial & case-insensitive matches** (e.g. typing `"new"` will match `"New York"`). Results are displayed in a **glassy, modern UI**.  
 
-🚀 Getting Started:
+---
+
+## ⚡ Tech Stack  
+- **Frontend:** React, React Router, Axios, Tailwind CSS  
+- **Backend:** Node.js, Express, CORS  
+- **Data Source:** Mock flight dataset (`mockAPI.js`)  
+
+---
+
+## 🚀 Getting Started  
+
+```bash
 # Clone Repo
 git clone https://github.com/your-username/flight-search-app.git
 cd flight-search-app
