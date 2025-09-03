@@ -1,39 +1,58 @@
-import React from "react";
-import { useState } from "react";
-import flights from "../assets/mockAPI";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 
+const Flights = () => {
+  const { state: searchParams } = useLocation(); // {departure, arrival}
+  const [flights, setFlights] = useState([]);
 
-const Flight=()=>{
+  useEffect(() => {
+    const fetchFlights = async () => {
+      try {
+        const res = await axios.post("http://localhost:3000/flights", searchParams);
+        console.log("✅ Filtered flights:", res.data);
+        setFlights(res.data);
+      } catch (err) {
+        console.error("❌ Error fetching flights:", err);
+      }
+    };
 
-        const handleData=async(e)=>{
-            try{
-                const res= await axios.fetch('http://localhost:3000/flight/list');
-                console.log("✅ Response",res.data);
-            }
-            catch(err){
-                console.error("❌ Error sending data:", err);
-            }
-        }
-        return(
-            <div className="bg-gradient-to-r from-gray-900 via-blue-700 to-blue-300">
-                <h2 className="text-center font-bold text-8xl text-white">Flight List</h2>
-                <div className="flex aligns-items-center justify-center mt-11">
-                <ul className="grid grid-cols-3  gap-11 ">
-                    {flights.map((flight, index) => (
-                        <div className="border-3 p-8 bg-gradient-to-r from-blue-600 to-white rounded-xl  hover:scale-104  ">
-                            <h1 className="font-bold text-center text-3xl">{flight.airline}</h1>
-                            <div className="flex mt-4 justify-center items-center gap-8 text-xl">
-                                <h1>{flight.origin.city}</h1><span>✈️</span><h1>{flight.destination.city}</h1>
-                            </div>  
+    if (searchParams) fetchFlights();
+  }, [searchParams]);
 
-                        </div>
-                        
-                    ))
-                    }
-                </ul>
+  return (
+    <div className="min-h-screen bg-gradient-to-r from-gray-200 via-blue-300 to-blue-500">
+      <h2 className="text-center font-bold text-6xl text-white py-10">Available Flights</h2>
+      <div className="flex justify-center px-6">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-2xl">
+          {flights.length > 0 ? (
+            flights.map((flight, index) => (
+              <div
+                key={index}
+                className="p-6 rounded-2xl bg-white backdrop-blur-xl  shadow-xl shadow-black
+                           hover:scale-105 transition-transform"
+              >
+                <h1 className="font-bold text-4xl text-center text-gray-900 mb-4">{flight.airline}</h1>
+                <div className="flex justify-center items-center gap-6 text-3xl text-gray-800">
+                  <span>{flight.origin.city}</span>
+                  <span>✈️</span>
+                  <span>{flight.destination.city}</span>
                 </div>
-            </div>
-        )
-}
-export default Flight;
+                <div className="text-center  mt-4 text-gray-700">
+                  <p><strong>Departure:</strong> {flight.departure.scheduledTime}</p>
+                  <p><strong>Arrival:</strong> {flight.arrival.scheduledTime}</p>
+                  <p><strong>Status:</strong> {flight.status}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="p-6 rounded-2xl  bg-white backdrop-blur-xl  shadow-xl shadow-black
+                           hover:scale-105 transition-transform text-black text-5xl col-span-full text-center">❌ No matching flights</p>
+          )}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default Flights;
