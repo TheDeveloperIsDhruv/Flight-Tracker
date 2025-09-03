@@ -1,12 +1,42 @@
-# React + Vite
+# ✈️ Flight Search App  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple **full-stack flight search app** built with **React, Express, Axios, and Tailwind CSS**.  
 
-Currently, two official plugins are available:
+Users can search flights by **From** and **To** city — supports **partial & case-insensitive matches** (e.g. typing `"new"` will match `"New York"`). Results are displayed in a **glassy, modern UI**.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ⚡ Tech Stack  
+- **Frontend:** React, React Router, Axios, Tailwind CSS  
+- **Backend:** Node.js, Express, CORS  
+- **Data Source:** Mock flight dataset (`mockAPI.js`)  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Getting Started  
+
+```bash
+# Clone Repo
+git clone https://***
+cd flight_tracker
+
+# Frontend setup
+npm install
+npm run dev      # Runs on http://localhost:5173 (Vite default)
+
+# Backend setup
+cd Backend
+npm install
+node server.js   # Runs on http://localhost:3000
+
+🔗 API Endpoint
+POST /flights → Returns matching flights
+
+Example request body:
+{ "departure": "New York", "arrival": "London" }
+
+## 🛠️ Future Plans
+- 🔗 Integrate with real-world flight APIs (Skyscanner, Amadeus, Aviationstack)
+- 📅  Add search by departure & arrival dates
+- 📍 Display airline logos, terminal info, and live flight status
+- 🌍 Deploy demo version for public use
